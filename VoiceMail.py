@@ -69,7 +69,7 @@ class VoiceMail(ShAPIView):
 
             voicemail_obj.time = datetime.datetime(cur_gmtime.tm_year, cur_gmtime.tm_mon, cur_gmtime.tm_mday,
                                                    cur_gmtime.tm_hour, cur_gmtime.tm_min, cur_gmtime.tm_sec, tzinfo=pytz.UTC)
-            voicemail_obj.save()
+            #voicemail_obj.save()
             #newly add 'US/Central' timezone
             UTC = pytz.utc
             timeZ_Ce = pytz.timezone('US/Central')
