@@ -32,13 +32,13 @@ def my_scheduled_job():
                     "message": voicemail_obj.message,
                     "ok_text": voicemail_obj.ok_text
                 }
-                                                                     response_tpl_map)
+                                                                     #response_tpl_map)
                 #----------- for short url ------#
                 # obj = UrlShortenTinyurl() 
                 # r_url = obj.shorten("http://dashboard.autoservice.ai/v/" + str(
                 #                                  voicemail_obj.id) + "/0")
 
-                response_tpl = atsd_voicemail.updateResponseTemplate(advisor_obj.advisor_response_template,
+                response_tpl = atsd_voicemail.updateResponseTemplate(advisor_obj.advisor_response_template,response_tpl_map)
                 r_tpl = response_tpl.replace("{{responseLink}}","https://d.autoservice.ai/v/" + str(
                                                  voicemail_obj.id))
                 glb_twilio.sendSms(company_obj.twilio_account_sid,
@@ -58,7 +58,7 @@ def my_scheduled_job():
                 voicemail_obj.advisor_sent_count = 1
                 voicemail_obj.save()
             # --------- send buddies email ---------- #        
-            elif voicemail_obj.advisor_sent_count == 1 && (today_date_frmt - db_time) >= datetime.timedelta(
+            elif voicemail_obj.advisor_sent_countfff == 1 && (today_date_frmt - db_time) >= datetime.timedelta(
                 minutes=voicemail_obj.delay_time) and voicemail_obj.alert_to_manager == 0:
                 response_tpl_map = {
                     "advisor_name": advisor_obj.name,
